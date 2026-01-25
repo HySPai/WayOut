@@ -52,7 +52,6 @@ public class FirebaseManager : MonoBehaviour
             {
                 InitializeFirebase();
 
-                // Kiểm tra nếu có người dùng đã đăng nhập
                 if (auth.CurrentUser != null)
                 {
                     User = auth.CurrentUser;
@@ -60,7 +59,6 @@ public class FirebaseManager : MonoBehaviour
                     usernameField.text = User.DisplayName;
                     usernameField.characterLimit = 10;
                     usernameRegisterField.characterLimit = 10;
-                    // Chờ một chút để đảm bảo LoadUserData() đã hoàn tất trước khi chuyển đến màn hình chính
                     StartCoroutine(ShowMainMenuAfterLoad());
                 }
             }
@@ -149,6 +147,7 @@ public class FirebaseManager : MonoBehaviour
     public void UserDatadButton()
     {
         UIAuthManager.instance.UserDataScreen();
+        StartCoroutine(LoadUserData());
     }
 
     //Function for the scoreboard button

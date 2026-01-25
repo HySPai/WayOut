@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scene/End Menu.unity
     guid: b127d22642a669b4389e5101dee6b22e
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: bfc6220b41a59f44bb3769fb4a2a2661, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: bb4666d50bcc0884ca806e7ae8b09dbc, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3060e056d07d2494aade2bb4f9b18f8c, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 1d1eb23e1c8b27142955d14133eb4825, type: 2}
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2938923da3a65c7438fac46283c2b701, type: 2}
-    com.unity.addressableassets: {fileID: 11400000, guid: 5e5ead0df889abf47a8802660403b5be, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: f3490caa36028c44b960fd85041962b6, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 39fd817d1b504ca479f5f7b4be2ddf2a, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 0cdb8f8946a982a48a86495c82e1645d, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 2173bed2c3056714190acad605743927, type: 2}

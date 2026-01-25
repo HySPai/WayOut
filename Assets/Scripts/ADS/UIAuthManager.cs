@@ -1,39 +1,30 @@
+using Firebase.Auth;
 using UnityEngine;
 
 public class UIAuthManager : MonoBehaviour
 {
     public static UIAuthManager instance;
 
-    //Screen object variables
     public GameObject loginUI;
     public GameObject registerUI;
     public GameObject userDataUI;
     public GameObject scoreboardUI;
     public GameObject mainMenu;
 
-    // Button variables
-    public GameObject loginButton;
-    public GameObject scoreboardButton;
-
-    // Authentication status
-    private bool isUserLoggedIn = false; // This will be true after the user successfully logs in
-
     private void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
-        else if (instance != null)
-        {
-            Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
-        }
+        else
+            Destroy(gameObject);
     }
 
-    // Functions to change the login screen UI
+    private bool IsLoggedIn()
+    {
+        return FirebaseAuth.DefaultInstance.CurrentUser != null;
+    }
 
-    public void ClearScreen() // Turn off all screens
+    public void ClearScreen()
     {
         loginUI.SetActive(false);
         registerUI.SetActive(false);
@@ -42,62 +33,57 @@ public class UIAuthManager : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    public void LoginScreen() // Show login screen
+    public void LoginScreen()
     {
         ClearScreen();
         loginUI.SetActive(true);
-        Debug.Log("LoginScreen");
     }
 
-    public void RegisterScreen() // Show register screen
+    public void RegisterScreen()
     {
         ClearScreen();
         registerUI.SetActive(true);
     }
 
-    public void UserDataScreen() // Show user data screen
+    public void UserDataScreen()
     {
-        if (isUserLoggedIn)
+        if (IsLoggedIn())
         {
             ClearScreen();
             userDataUI.SetActive(true);
         }
         else
         {
-            LoginScreen(); // Redirect to login screen if not logged in
+            LoginScreen();
         }
     }
 
-    public void ScoreboardScreen() // Show scoreboard screen
+    public void ScoreboardScreen()
     {
-        if (isUserLoggedIn)
+        if (IsLoggedIn())
         {
             ClearScreen();
             scoreboardUI.SetActive(true);
         }
         else
         {
-            LoginScreen(); // Redirect to login screen if not logged in
+            LoginScreen();
         }
     }
 
-    public void MainMenuScreen() // Show main menu screen
+    public void MainMenuScreen()
     {
         ClearScreen();
         mainMenu.SetActive(true);
-        Debug.Log("MainMenuScreen");
     }
 
-    // This method should be called after successful login to update login status
     public void OnUserLogin()
     {
-        isUserLoggedIn = true;
         MainMenuScreen();
     }
 
     public void OnUserSignOut()
     {
-        isUserLoggedIn = false;
-        MainMenuScreen();
+        LoginScreen();
     }
 }

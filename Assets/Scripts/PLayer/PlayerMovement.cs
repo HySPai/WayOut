@@ -88,10 +88,15 @@ public class PlayerMovement : MonoBehaviour
 
 
         #region INPUT HANDLER
-        _moveInput.y = Input.GetAxisRaw("Vertical");
-        if (!mobile)
+        float keyboardInput = Input.GetAxisRaw("Horizontal");
+
+        if (Mathf.Abs(keyboardInput) > 0.01f)
         {
-            _moveInput.x = Input.GetAxisRaw("Horizontal");
+            _moveInput.x = keyboardInput;
+        }
+        if (Mathf.Abs(keyboardInput) < 0.01f && !Input.GetMouseButton(0))
+        {
+            StopMoving();
         }
 
         if (_moveInput.x != 0)
